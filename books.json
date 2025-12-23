@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling",
+        "genre": "Fantasy",
+        "synopsis": "A young boy discovers he's a wizard and attends Hogwarts School of Witchcraft and Wizardry, where he makes friends, learns magic, and confronts the dark wizard who killed his parents."
+    },
+    {
+        "id": 2,
+        "title": "A Brief History of Time",
+        "author": "Stephen Hawking",
+        "genre": "Science",
+        "synopsis": "Stephen Hawking's landmark book explores the nature of the universe, from the Big Bang to black holes, making complex scientific concepts accessible to general readers."
+    },
+    {
+        "id": 3,
+        "title": "The Da Vinci Code",
+        "author": "Dan Brown",
+        "genre": "Mystery",
+        "synopsis": "A murder in the Louvre Museum leads to a trail of clues found in the works of Leonardo da Vinci, revealing a historical mystery that could shake the foundations of Christianity."
+    },
+    {
+        "id": 4,
+        "title": "The Autobiography of Malcolm X",
+        "author": "Malcolm X",
+        "genre": "Biography",
+        "synopsis": "The life story of Malcolm X, one of the most influential African American leaders, as told to Alex Haley, covering his transformation from street criminal to prominent Black Muslim leader."
+    },
+    {
+        "id": 5,
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasy",
+        "synopsis": "Bilbo Baggins, a respectable hobbit, embarks on an unexpected adventure with a group of dwarves to reclaim their mountain home from the dragon Smaug."
+    },
+    {
+        "id": 6,
+        "title": "Cosmos",
+        "author": "Carl Sagan",
+        "genre": "Science",
+        "synopsis": "Carl Sagan's classic exploration of the universe, connecting scientific concepts with philosophical and historical perspectives on our place in the cosmos."
+    },
+    {
+        "id": 7,
+        "title": "The Girl with the Dragon Tattoo",
+        "author": "Stieg Larsson",
+        "genre": "Mystery",
+        "synopsis": "A journalist and a hacker investigate the disappearance of a wealthy man's niece, uncovering dark family secrets and corruption in this gripping Swedish thriller."
+    },
+    {
+        "id": 8,
+        "title": "Steve Jobs",
+        "author": "Walter Isaacson",
+        "genre": "Biography",
+        "synopsis": "Based on interviews with Steve Jobs and those who knew him, this biography tells the story of the Apple co-founder's turbulent life and revolutionary impact on technology."
+    },
+    {
+        "id": 9,
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "genre": "Fiction",
+        "synopsis": "A young Andalusian shepherd named Santiago travels from Spain to Egypt in search of a treasure, learning about life and listening to his heart along the way."
+    },
+    {
+        "id": 10,
+        "title": "Clean Code",
+        "author": "Robert C. Martin",
+        "genre": "Technology",
+        "synopsis": "A practical guide to writing clean, maintainable code, with principles and patterns that help software developers improve their craft and create better software."
+    }
+]

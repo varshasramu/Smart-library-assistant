@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Library Assistant - User</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="logo-section">
+                <i class="fas fa-book-reader logo-icon"></i>
+                <div>
+                    <h1>Smart Library Assistant</h1>
+                    <p class="tagline">Voice-Powered Book Discovery</p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <div class="user-mode">
+                    <span class="mode-indicator user-mode-indicator">
+                        <i class="fas fa-user"></i> User Mode
+                    </span>
+                    <a href="admin.html" class="btn-admin-access" onclick="localStorage.setItem('isAdmin', 'true')">
+                        <i class="fas fa-user-cog"></i> Admin Login
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Voice Assistant Section -->
+        <section class="voice-assistant-section">
+            <div class="assistant-header">
+                <h2><i class="fas fa-microphone-alt"></i> Voice Assistant</h2>
+                <div class="assistant-status">
+                    <span class="status-text">Ready</span>
+                    <div class="status-indicator ready"></div>
+                </div>
+            </div>
+            
+            <div class="assistant-controls">
+                <button id="voice-btn" class="voice-control-btn">
+                    <i class="fas fa-microphone"></i>
+                    <span>Click to Speak</span>
+                </button>
+                
+                <div class="voice-examples">
+                    <p><i class="fas fa-lightbulb"></i> Try saying:</p>
+                    <div class="example-chips">
+                        <span class="chip">"Find Harry Potter"</span>
+                        <span class="chip">"Science books"</span>
+                        <span class="chip">"Recommend mystery"</span>
+                        <span class="chip">"Show all books"</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="voice-response" class="voice-response-area">
+                <div class="response-bubble assistant">
+                    <i class="fas fa-robot"></i>
+                    <p>Hello! I'm your library assistant. Click the microphone and ask me to find books, get recommendations, or hear book details.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-search"></i> Find Books</h2>
+                    <div class="search-results-info">
+                        <span id="results-count">Loading books...</span>
+                    </div>
+                </div>
+                
+                <div class="search-controls">
+                    <div class="search-bar">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-input" placeholder="Search by title, author, or genre...">
+                        <button id="clear-search" class="btn-clear">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <button id="search-btn" class="btn-primary">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+                
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <label><i class="fas fa-filter"></i> Filters</label>
+                        <div class="filter-controls">
+                            <select id="genre-filter">
+                                <option value="">All Genres</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Science">Science</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Biography">Biography</option>
+                                <option value="Fiction">Fiction</option>
+                                <option value="Technology">Technology</option>
+                            </select>
+                            
+                            <select id="availability-filter">
+                                <option value="all">All Books</option>
+                                <option value="available">Available Now</option>
+                                <option value="borrowed">Borrowed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Stats -->
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-icon total">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-books">0</h3>
+                        <p>Total Books</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon available">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="available-books">0</h3>
+                        <p>Available Now</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon popular">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="popular-genre">-</h3>
+                        <p>Popular Genre</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon borrowed">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="borrowed-books">0</h3>
+                        <p>Currently Borrowed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Books Grid -->
+            <section class="books-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-book-open"></i> Library Collection</h2>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="books-container" class="books-grid">
+                    <!-- Books will be loaded here -->
+                </div>
+                
+                <div id="no-books" class="empty-state" style="display: none;">
+                    <i class="fas fa-book-open"></i>
+                    <h3>No books found</h3>
+                    <p>Try a different search or browse recommendations</p>
+                </div>
+            </section>
+
+            <!-- Recommendations -->
+            <section class="recommendations-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Recommendations</h2>
+                    <button id="refresh-recommendations" class="btn-secondary">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+                
+                <div class="genre-tabs">
+                    <button class="genre-tab active" data-genre="Fantasy">
+                        <i class="fas fa-dragon"></i> Fantasy
+                    </button>
+                    <button class="genre-tab" data-genre="Science">
+                        <i class="fas fa-flask"></i> Science
+                    </button>
+                    <button class="genre-tab" data-genre="Mystery">
+                        <i class="fas fa-search"></i> Mystery
+                    </button>
+                    <button class="genre-tab" data-genre="Biography">
+                        <i class="fas fa-user"></i> Biography
+                    </button>
+                </div>
+                
+                <div id="recommendations-container" class="recommendations-grid">
+                    <!-- Recommendations will be loaded here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-info-circle"></i> About</h3>
+                    <p>Voice-powered library system for easy book discovery and management.</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-bullhorn"></i> Features</h3>
+                    <p>Voice Search • Smart Recommendations • Book Borrowing • Admin Dashboard</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-graduation-cap"></i> Project</h3>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Smart Library Assistant &copy; 2025 | All rights reserved</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Book Details Modal -->
+    <div id="book-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Book Title</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="book-meta">
+                    <span class="book-author" id="modal-author">Author</span>
+                    <span class="book-genre" id="modal-genre">Genre</span>
+                    <span class="book-status" id="modal-status">Available</span>
+                </div>
+                
+                <div class="synopsis-section">
+                    <h3><i class="fas fa-align-left"></i> Synopsis</h3>
+                    <p id="modal-synopsis">Book synopsis will appear here...</p>
+                </div>
+                
+                <div class="borrow-section">
+                    <h3><i class="fas fa-calendar-alt"></i> Borrow This Book</h3>
+                    
+                    <div class="borrow-info">
+                        <div class="info-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <div>
+                                <small>Borrow Date</small>
+                                <p id="borrow-date">Today</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar-times"></i>
+                            <div>
+                                <small>Return Date</small>
+                                <p id="return-date">2 weeks later</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form id="borrow-form">
+                        <div class="form-group">
+                            <label for="borrower-name"><i class="fas fa-user"></i> Your Name *</label>
+                            <input type="text" id="borrower-name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="borrower-email"><i class="fas fa-envelope"></i> Email *</label>
+                            <input type="email" id="borrower-email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary borrow-btn">
+                            <i class="fas fa-bookmark"></i> Borrow Book
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-secondary read-aloud-btn">
+                        <i class="fas fa-volume-up"></i> Read Aloud
+                    </button>
+                    <button class="btn-secondary close-btn">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Success!</h2>
+            <p id="success-message">Operation completed successfully.</p>
+            <button class="btn-primary close-success">Continue</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
